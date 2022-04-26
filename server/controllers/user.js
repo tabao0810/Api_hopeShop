@@ -34,6 +34,20 @@ class UserController{
             })
         })
     }
+    deleteUser(req, res) {
+    const id = req.params.UserId;
+        User.deleteOne({_id:id})  
+    .then(() =>
+      res.status(204).json({
+        success: true
+      })
+    )
+    .catch(err =>
+      res.status(500).json({
+        success: false
+      })
+    );
+}
     createOrder(req,res){
         const id = req.params.userId;
         User.findById(id)

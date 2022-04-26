@@ -3,7 +3,7 @@ const User = require("../models/user");
 const auth = require('../middleware/auth');
 const req = require("express/lib/request");
 
-const { updateUser, getAllUser} = require('../controllers/user');
+const { updateUser, getAllUser, deleteUser} = require('../controllers/user');
 const { route } = require("./blog");
 
 const routerUser = express.Router();
@@ -51,4 +51,5 @@ routerUser.post('/users/me/logout', auth, async(req, res) => {
     }       
       );
 routerUser.get('/all-user',getAllUser)
+routerUser.delete('/users/delete/:UserId',deleteUser)
 module.exports = routerUser;

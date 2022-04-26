@@ -7,7 +7,7 @@ class BlogController{
      _id: mongoose.Types.ObjectId(),
      image: req.body.image,
      description: req.body.description,
-     text: req.body.text,     
+     text: req.body.text,  
    }); 
    return blog
      .save()

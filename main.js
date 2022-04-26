@@ -6,8 +6,10 @@ const logger = require("morgan");
 require('dotenv').config();
 const blogRoutes = require('./server/routes/blog');
 const userRoutes = require('./server/routes/user');
-const productRoutes = require('./server/routes/product')
-const orderRoutes = require('./server/routes/orders')
+const productRoutes = require('./server/routes/product');
+const orderRoutes = require('./server/routes/orders');
+const brandRoutes = require('./server/routes/brands');
+const bannerRoutes = require('./server/routes/banners');
 
 
 // set up express app
@@ -18,7 +20,7 @@ app.use(logger("dev"));
 
 
 // set up mongoose
-mongoose.connect('mongodb://127.0.0.1:27017/shop_hope', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(()=> {
     console.log('Database connected');
   })
@@ -36,7 +38,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/shop_hope', { useNewUrlParser: true,
 app.use('/api/', blogRoutes);
 app.use('/api/', userRoutes);
 app.use('/api/',productRoutes);
-app.use('/api/',orderRoutes)
+app.use('/api/',orderRoutes);
+app.use('/api/',brandRoutes);
+app.use('/api/',bannerRoutes);
 
 
 
