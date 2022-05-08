@@ -46,7 +46,7 @@ app.use('/api/',bannerRoutes);
 
 
 // set up port number
-const port = process.env.port || 5035;
+const port = process.env.PORT || 5035;
 
 // set up home route
 app.get('/', (request, respond) => {

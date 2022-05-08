@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:prod": "node main.js"
+    "start:prod": "node main.js",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [
     "nodejs",
