@@ -120,5 +120,22 @@ class ProductController {
         })
       );
   }
+  getProductByType(req, res) {
+    Product.find({ typeProduct: req.params.typeProduct })
+      .select(
+        "_id image description typeProduct name price isSale sale sizeClothing sizesClothing sizeShoe sizesShoe color colors amount quantity"
+      )
+      .then((_products) => {
+        return res.status(200).json({
+          Product: _products,
+        });
+      })
+      .catch((error) => {
+        res.status(500).json({
+          success: false,
+          error: error.message,
+        });
+      });
+  }
 }
 module.exports = new ProductController();
