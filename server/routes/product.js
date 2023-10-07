@@ -8,6 +8,7 @@ const {
   deleteProduct,
   getRelatedProduct,
   getProductByType,
+  searchProduct,
 } = require("../controllers/products");
 
 const routerProduct = express.Router();
@@ -20,5 +21,6 @@ routerProduct.get("/product/type/:typeProduct", getProductByType);
 
 routerProduct.put("/product/:productId", updateProduct);
 routerProduct.delete("/product/:productId", deleteProduct);
+routerProduct.get("/product/search/s=:productName", searchProduct);
 
 module.exports = routerProduct;

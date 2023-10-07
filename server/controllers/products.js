@@ -137,5 +137,25 @@ class ProductController {
         });
       });
   }
+  searchProduct(req, res) {
+    const collation = { locale: "vi", strength: 1 };
+    const query = { name: new RegExp(req.params.productName, "i") };
+    Product.find(query)
+      .collation(collation)
+      .select(
+        "_id image description typeProduct name price isSale sale sizeClothing sizesClothing sizeShoe sizesShoe color colors amount quantity"
+      )
+      .then((_products) => {
+        return res.status(200).json({
+          Product: _products,
+        });
+      })
+      .catch((error) => {
+        res.status(500).json({
+          success: false,
+          error: error.message,
+        });
+      });
+  }
 }
 module.exports = new ProductController();
